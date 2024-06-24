@@ -26,8 +26,6 @@ dotnet add package Nall.Aspire.Hosting.DependsOn.All
 
 ## Examples
 
-### DependsOn
-
 ```csharp
 // AppHost.cs
 var builder = DistributedApplication.CreateBuilder(args);
