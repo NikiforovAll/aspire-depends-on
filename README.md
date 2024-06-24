@@ -28,34 +28,32 @@ dotnet add package Nall.Aspire.Hosting.DependsOn.All
 ```csharp
 // AppHost/Program.cs
 var builder = DistributedApplication.CreateBuilder(args);
-builder.Services.Configure<DependsOnOptions>(builder.Configuration.GetRequiredSection("DependsOnOptions"));
 
-var db = builder.AddSqlServer("sql")
-    .WithHealthCheck()
-    .AddDatabase("db");
+var admin = builder.AddParameter("postgres-admin", secret: true);
+var password = builder.AddParameter("postgres-password", secret: true);
 
-var rabbit = builder.AddRabbitMQ("rabbit")
-    .WithHealthCheck();
+builder.Services.Configure<DependsOnOptions>(builder.Configuration.GetSection("DependsOnOptions"));
 
-var console = builder.AddProject<Projects.ConsoleApp>("console");
+var dbServer = builder.AddPostgres("db-server", admin, password, 5432).WithHealthCheck();
 
-var api0 = builder.AddProject<Projects.WebApplication2>("api-unhealthy-for-a-little-bit")
-    .WithHealthCheck();
+dbServer.WithPgAdmin(c => c.WithHostPort(5050).WaitFor(dbServer));
 
-builder
-    .AddProject<Projects.WebApplication1>("api")
-    .WithExternalHttpEndpoints()
+var db = dbServer.AddDatabase("db");
+
+var migrator = builder
+    .AddProject<Projects.MigrationService>("migrator")
     .WithReference(db)
-    .WithReference(rabbit)
-    .WaitFor(db)
-    .WaitFor(rabbit)
-    .WaitFor(api0)
-    .WaitForCompletion(console);
+    .WaitFor(db);
+
+var api = builder
+    .AddProject<Projects.Api>("api")
+    .WithReference(db)
+    .WaitForCompletion(migrator);
 
 builder.Build().Run();
 ```
 
-![alt](/assets/example-1.png)
+![alt](/assets/demo-depends-on.gif)
 
 ## Build and Development
 

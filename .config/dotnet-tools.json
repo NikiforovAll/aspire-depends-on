@@ -25,6 +25,12 @@
       "commands": [
         "dotnet-outdated"
       ]
+    },
+    "dotnet-ef": {
+      "version": "8.0.6",
+      "commands": [
+        "dotnet-ef"
+      ]
     }
   }
 }

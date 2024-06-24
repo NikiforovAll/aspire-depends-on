@@ -2,13 +2,24 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Debug AppHost",
+        "name": "Debug GettingStarted:AppHost",
         "type": "coreclr",
         "request": "launch",
         "preLaunchTask": "build",
         "program": "${workspaceFolder}/samples/GettingStarted/AppHost/bin/Debug/net8.0/AppHost.dll",
         "args": [],
         "cwd": "${workspaceFolder}/samples/GettingStarted/AppHost",
+        "stopAtEntry": false,
+        "console": "externalTerminal"
+      },
+      {
+        "name": "Debug Todo:AppHost",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/samples/Todo/AppHost/bin/Debug/net8.0/AppHost.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/samples/Todo/AppHost",
         "stopAtEntry": false,
         "console": "externalTerminal"
       }
