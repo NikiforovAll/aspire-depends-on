@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Package">
+    <Product>Nall.Aspire.Hosting.DependsOn.All</Product>
+    <Description>Aspire Healthchecks for various components</Description>
+    <PackageTags>aspire;healthcheks</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn.PostgreSQL\Nall.Aspire.Hosting.DependsOn.PostgreSQL.csproj" />
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn\Nall.Aspire.Hosting.DependsOn.csproj" />
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn.SqlServer\Nall.Aspire.Hosting.DependsOn.SqlServer.csproj" />
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn.RabbitMq\Nall.Aspire.Hosting.DependsOn.RabbitMq.csproj" />
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn.Uris\Nall.Aspire.Hosting.DependsOn.Uris.csproj" />
+  </ItemGroup>
+</Project>

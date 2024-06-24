@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug AppHost",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/samples/GettingStarted/AppHost/bin/Debug/net8.0/AppHost.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/samples/GettingStarted/AppHost",
+        "stopAtEntry": false,
+        "console": "externalTerminal"
+      }
+    ]
+}

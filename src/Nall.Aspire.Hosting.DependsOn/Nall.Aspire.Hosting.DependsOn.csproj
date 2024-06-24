@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Package">
+    <Product>Nall.Aspire.Hosting.DependsOn</Product>
+    <Description>Aspire DependsOn functionality based on healthcheks</Description>
+    <PackageTags>aspire;healthcheks</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Resilience" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+{
+  "cSpell.words": [
+    "Nall"
+  ],
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+}

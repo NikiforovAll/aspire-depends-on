@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Package">
+    <Product>Nall.Aspire.Hosting.DependsOn.PostgreSQL</Product>
+    <Description>Aspire Healthchecks for PostgreSQL</Description>
+    <PackageTags>aspire;healthcheks</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nall.Aspire.Hosting.DependsOn\Nall.Aspire.Hosting.DependsOn.csproj" />
+  </ItemGroup>
+</Project>

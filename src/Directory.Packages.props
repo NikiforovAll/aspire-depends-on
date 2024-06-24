@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Aspire.Hosting" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="8.0.1" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.RabbitMq" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Resilience" Version="8.6.0" />
+  </ItemGroup>
+  <ItemGroup Label="Release">
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+    <PackageVersion Include="MinVer" Version="5.0.0" />
+  </ItemGroup>
+</Project>
