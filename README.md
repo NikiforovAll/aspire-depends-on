@@ -26,7 +26,7 @@ dotnet add package Nall.Aspire.Hosting.DependsOn.All
 ## Examples
 
 ```csharp
-// AppHost.cs
+// AppHost/Program.cs
 var builder = DistributedApplication.CreateBuilder(args);
 builder.Services.Configure<DependsOnOptions>(builder.Configuration.GetRequiredSection("DependsOnOptions"));
 
@@ -63,7 +63,7 @@ builder.Build().Run();
 
 `dotnet cake --target test`
 
-`dotnet pack -o ./Artefacts`
+`dotnet --target pack`
 
 ## References
 
