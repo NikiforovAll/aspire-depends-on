@@ -63,7 +63,7 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.event_name == 'release'
     environment:
       name: "GitHub Packages"
-      url: https://github.com/NikiforovAll/keycloak-authorization-services-dotnet/packages/
+      url: https://github.com/NikiforovAll/aspire-depends-on/packages/
     permissions:
       packages: write
     runs-on: windows-latest
@@ -85,7 +85,7 @@ jobs:
     if: github.event_name == 'release'
     environment:
       name: "NuGet"
-      url: https://www.nuget.org/packages?q=Keycloak.AuthServices
+      url: https://www.nuget.org/packages?q=Nall.Aspire.Hosting.DependsOn
     runs-on: windows-latest
     steps:
       - name: "Download Artefact"
