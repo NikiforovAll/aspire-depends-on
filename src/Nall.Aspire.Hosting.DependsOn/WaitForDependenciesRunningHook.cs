@@ -101,10 +101,12 @@ internal class WaitForDependenciesRunningHook : IDistributedApplicationLifecycle
 
                     async Task Wait()
                     {
+                        this.logger?.LogDebug("Waiting for {Resource}.", waitOn.Resource.Name);
                         context.Logger?.LogInformation("Waiting for {Resource}.", waitOn.Resource.Name);
 
                         await tcs.Task;
 
+                        this.logger?.LogDebug("Waiting for {Resource}.", waitOn.Resource.Name);
                         context.Logger?.LogInformation("Waiting for {Resource} completed.", waitOn.Resource.Name);
                     }
 
@@ -266,10 +268,9 @@ internal class WaitForDependenciesRunningHook : IDistributedApplicationLifecycle
 
                         if (result.Status != HealthStatus.Healthy)
                         {
-                            var ex = new AspireHostException("Health check failed");
-                            logger.LogError(ex, "Failed to construct a health check - {Name}", resource.Name);
+                            logger.LogDebug("Failed health check - {Name}", resource.Name);
 
-                            throw ex;
+                            throw new AspireHostException("Health check failed");
                         }
                     };
                 }
