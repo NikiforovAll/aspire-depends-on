@@ -1,7 +1,7 @@
 # Nall.Aspire.Hosting.DependsOn
 
 [![Build](https://github.com/NikiforovAll/aspire-depends-on/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/NikiforovAll/aspire-depends-on/actions/workflows/build.yml)
-[![NuGet](https://img.shields.io/nuget/dt/Nall.Aspire.Hosting.DependsOn.All.svg)](https://nuget.org/packages/Nall.Aspire.Hosting.DependsOn.All)
+[![NuGet](https://img.shields.io/nuget/dt/Nall.Aspire.Hosting.DependsOn.svg)](https://nuget.org/packages/Nall.Aspire.Hosting.DependsOn)
 [![contributionswelcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nikiforovall/aspire-depends-on)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nikiforovall/aspire-depends-on/blob/main/LICENSE.md)
