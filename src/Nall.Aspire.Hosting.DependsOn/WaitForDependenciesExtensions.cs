@@ -45,24 +45,22 @@ public static class WaitForDependenciesExtensions
     {
         builder.Services.TryAddLifecycleHook<WaitForDependenciesRunningHook>();
 
+        // configures default options
         builder
             .Services.AddOptions<DependsOnOptions>()
             .Configure(options =>
             {
-                options.Retry.MaxDelay = TimeSpan.FromSeconds(30);
-                options.Retry.BackoffType = DelayBackoffType.Exponential;
-                options.Retry.MaxRetryAttempts = 10;
-                options.Timeout.Timeout = TimeSpan.FromMinutes(2);
+                options.Retry ??= new()
+                {
+                    ShouldHandle = new PredicateBuilder().Handle<Exception>(),
+                    MaxDelay = TimeSpan.FromSeconds(30),
+                    BackoffType = DelayBackoffType.Exponential,
+                    MaxRetryAttempts = 10,
+                };
+
+                options.Timeout ??= new() { Timeout = TimeSpan.FromMinutes(1) };
             });
+
         return builder;
     }
-}
-
-internal sealed class WaitOnAnnotation(IResource resource) : IResourceAnnotation
-{
-    public IResource Resource { get; } = resource;
-
-    public string[]? States { get; set; }
-
-    public bool WaitUntilCompleted { get; set; }
 }

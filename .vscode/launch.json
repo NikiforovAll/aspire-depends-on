@@ -22,6 +22,17 @@
         "cwd": "${workspaceFolder}/samples/Todo/AppHost",
         "stopAtEntry": false,
         "console": "externalTerminal"
+      },
+      {
+        "name": "Debug NeverEnds:AppHost",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/samples/NeverEnds/AppHost/bin/Debug/net8.0/AppHost.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/samples/NeverEnds/AppHost",
+        "stopAtEntry": false,
+        "console": "externalTerminal"
       }
     ]
 }

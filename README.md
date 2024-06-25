@@ -61,7 +61,7 @@ builder.Build().Run();
 
 `dotnet cake --target test`
 
-`dotnet --target pack`
+`dotnet cake --target pack`
 
 ## References
 

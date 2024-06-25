@@ -10,14 +10,27 @@ using Microsoft.Extensions.Options;
 using Nall.Aspire.Hosting.DependsOn;
 using Polly;
 
-internal class WaitForDependenciesRunningHook(
-    DistributedApplicationExecutionContext executionContext,
-    ResourceNotificationService resourceNotificationService,
-    IOptions<DependsOnOptions> options,
-    ILogger<WaitForDependenciesRunningHook> logger
-) : IDistributedApplicationLifecycleHook, IAsyncDisposable
+internal class WaitForDependenciesRunningHook : IDistributedApplicationLifecycleHook, IAsyncDisposable
 {
-    private readonly CancellationTokenSource cts = new();
+    private readonly CancellationTokenSource cts;
+    private readonly DistributedApplicationExecutionContext executionContext;
+    private readonly ResourceNotificationService resourceNotificationService;
+    private readonly IOptions<DependsOnOptions> options;
+    private readonly ILogger<WaitForDependenciesRunningHook> logger;
+
+    public WaitForDependenciesRunningHook(
+        DistributedApplicationExecutionContext executionContext,
+        ResourceNotificationService resourceNotificationService,
+        IOptions<DependsOnOptions> options,
+        ILogger<WaitForDependenciesRunningHook> logger
+    )
+    {
+        this.executionContext = executionContext;
+        this.resourceNotificationService = resourceNotificationService;
+        this.options = options;
+        this.logger = logger;
+        this.cts = new();
+    }
 
     public Task BeforeStartAsync(DistributedApplicationModel appModel, CancellationToken cancellationToken = default)
     {
@@ -44,7 +57,7 @@ internal class WaitForDependenciesRunningHook(
             // Abuse the environment callback to wait for dependencies to be running
             r.Annotations.Add(
                 new EnvironmentCallbackAnnotation(async context =>
-                    await BuildDependenciesGraphAsync(
+                    await this.BuildDependenciesGraphAsync(
                         resourceNotificationService,
                         context,
                         waitingResources,
@@ -253,7 +266,10 @@ internal class WaitForDependenciesRunningHook(
 
                         if (result.Status != HealthStatus.Healthy)
                         {
-                            throw new AspireHostException("Health check failed");
+                            var ex = new AspireHostException("Health check failed");
+                            logger.LogError(ex, "Failed to construct a health check - {Name}", resource.Name);
+
+                            throw ex;
                         }
                     };
                 }

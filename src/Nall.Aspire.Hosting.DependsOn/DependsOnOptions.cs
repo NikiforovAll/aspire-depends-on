@@ -5,7 +5,7 @@ using Polly.Timeout;
 
 public class DependsOnOptions
 {
-    public RetryStrategyOptions Retry { get; set; } = new();
+    public RetryStrategyOptions Retry { get; set; }
 
-    public TimeoutStrategyOptions Timeout { get; set; } = new();
+    public TimeoutStrategyOptions Timeout { get; set; }
 }
